@@ -1,6 +1,6 @@
 package com.bjsxt.entity;
 
-public class Users {
+public class User {
 	private String uname;
 	private Integer uid;
 	private Integer uage;
