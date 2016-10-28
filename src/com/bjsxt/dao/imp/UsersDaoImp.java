@@ -14,9 +14,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bjsxt.dao.UsersDao;
+import com.bjsxt.entity.Dept;
 import com.bjsxt.entity.User;
 import com.bjsxt.entity.UsersVo;
-import com.mysql.jdbc.PreparedStatement;
+
 
 public class UsersDaoImp implements UsersDao {
 
@@ -101,6 +102,12 @@ public class UsersDaoImp implements UsersDao {
 
 	@Override
 	public List<User> selectUserDept() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dept selectDept(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

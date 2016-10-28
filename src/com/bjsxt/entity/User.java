@@ -3,7 +3,7 @@ package com.bjsxt.entity;
 public class User {
 	private String uname;
 	private Integer uid;
-	private Integer uage;
+
 	private Dept dept;
 	public Dept getDept() {
 		return dept;
@@ -23,12 +23,6 @@ public class User {
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
-	public Integer getUage() {
-		return uage;
-	}
-	public void setUage(Integer uage) {
-		this.uage = uage;
-	}
-	
+
 
 }

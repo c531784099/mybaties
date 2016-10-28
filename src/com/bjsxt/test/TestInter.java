@@ -26,7 +26,7 @@ public class TestInter {
 		UsersDao ud=session.getMapper(UsersDao.class);
 //		准备数据
 		User u1=new User();
-		u1.setUage(99);
+//		u1.setUage(99);
 		u1.setUname("feng");
 //		调用代理对象增强后的方法。
 		ud.addUsers(u1);

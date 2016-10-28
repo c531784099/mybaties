@@ -2,9 +2,10 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bjsxt.dao.UsersDao">
+<mapper namespace="com.bjsxt.dao.UsersDao"> 
 <!-- 返回结果是一个集合 并且其中 关联了一个对象 -->
 <!-- 返回数据的  结果映射集 -->
+
 <resultMap type="com.bjsxt.entity.User" id="resultMap">
    <id property="uid" column="uid"/>
    <result property="uname" column="uname"/>
@@ -12,16 +13,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result property="dname" column="dname"/>  
    </association>
 </resultMap>
+ 
 <!-- sql语句 的定义 -->
+
  <select id="selectUserDept" resultMap="resultMap">
  
    select uname,uid,dname from user_table inner join dept_name where user_table.did=dept_name.did
  
  </select>
+
+ <!-- 测试的一对多  数据按照这个配置项来配置-->
+ <resultMap type="com.bjsxt.entity.Dept" id="resultMap1">
  
+ <id property="did" column="did"/>
+ <result property="dname" column="dname"/>
  
+ <collection property="ulist" ofType="com.bjsxt.entity.User">
+   <id property="uid" column="uid"/>
+   <result property="uname" column="uname"/>
  
- <select id=""></select>
+ </collection>
+
+ </resultMap>
+ 
+
+ 
+<!-- 查询部门 --> 
+ <select id="selectDept" parameterType="java.lang.Integer" resultMap="resultMap1">
+ select uname,uid,dname from user_table inner join dept_name on user_table.did=dept_name.did where user_table.did=#{id}
+ 
+ </select>
+  <!-- 定义一个多对一 但是需要修稿接口的返回值和参数 -->
+ <resultMap type="com.bjsxt.entity.User" id="resultMap2">
+    <id property="uid" column="uid"/>
+    <result property="uname" column="uname"/>
+    <association property="dept" javaType="com.bjsxt.entity.Dept" >
+      <result property="dname" column="dname"/>
+    </association>
+ 
+ </resultMap>
 
 
 
