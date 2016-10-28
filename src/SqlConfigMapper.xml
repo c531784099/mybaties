@@ -3,6 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+<!-- 缓存使用数据库的主键  id作为 map的键 -->
+    <settings>
+		<!-- 开启懒加载 -->
+		<setting name="lazyLoadingEnabled" value="true"></setting>
+		<setting name="aggressiveLazyLoading" value="false"></setting>
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+	
+	
    <environments default="mysql">
       <environment id="mysql">
       <transactionManager type="JDBC"></transactionManager>
@@ -15,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       </environment>  
    </environments>
    <mappers >
-     <mapper resource="com/bjsxt/dao/UsersDao.xml"/>
+     <mapper resource="com/bjsxt/lazy/UserDao.xml"/>
    </mappers>
 
 </configuration>
