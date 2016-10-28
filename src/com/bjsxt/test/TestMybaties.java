@@ -14,7 +14,7 @@ public class TestMybaties {
 		UsersDaoImp ud=new UsersDaoImp();
 		
 		User u1=new User();
-//		u1.setUage(34);
+
 		u1.setUname("cheng");
 		
 		ud.addUsers(u1);
@@ -39,7 +39,7 @@ public class TestMybaties {
 		
 		User u1=ud.slectById(8);
 		
-//		System.out.println(u1.getUname()+"=="+u1.getUage());
+//		System.out.println(u1.getUname()+"==");
 		
 	}
 	
