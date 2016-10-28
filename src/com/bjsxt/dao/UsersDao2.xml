@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射  代理类的创建 和preparedstatement对象的构造 -->
+<mapper namespace="com.bjsxt.dao.UsersDao">
+  <insert id="addUsers" parameterType="com.bjsxt.entity.User">
+  
+    insert into u_table values(null,#{uname},#{uage})
+  </insert>
+  <!-- 这里的  uid uname  danme  必须和 实体类中的属性名对应 -->
+   <select id="selectUD" resultType="com.bjsxt.entity.UsersVo">
+    select uid,uname,dname from user_table inner join dept_name where user_table.did=dept_name.did
+   
+   </select>
+</mapper>
