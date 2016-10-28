@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjsxt.wheresql.UserDao">
+<select id="selectBy" resultType="com.bjsxt.wheresql.User" parameterType="com.bjsxt.wheresql.User">
+   select uname,uid from uu_table   
+   <where>
+     <if test="uname!=null">
+       and uname=#{uname}
+     </if>
+     <if test="uid!=null">
+       and uid=#{uid}
+     </if> 
+   </where>
+   <!-- 可以替换sql 片段 -->
+   <include refid="sql1"></include>
+</select>
+<!-- 定义sql片段 可以引用 -->
+
+<sql id="sql1">
+   <where>
+     <if test="uname!=null">
+       and uname=#{uname}
+     </if>
+     <if test="uid!=null">
+       and uid=#{uid}
+     </if> 
+   </where>
+
+
+</sql>
+
+
+
+</mapper>

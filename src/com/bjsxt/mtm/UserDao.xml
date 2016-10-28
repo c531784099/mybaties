@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mtm.UserDao" >
+
+<resultMap type="com.bjsxt.mtm.Dept" id="resultMap">
+  <id property="did" column="did"/>
+  <result property="dname" column="dname"/>
+  <collection property="ulist" ofType="com.bjsxt.mtm.User">
+    <id property="uid" column="uid"/>
+    <result property="uname" column="uname"/>
+    <association property="dept" javaType="com.bjsxt.mtm.Dept">
+      <result property="dname" column="dname"/>
+    </association>
+    <collection property="plist" ofType="com.bjsxt.mtm.Post">
+     <id property="pid" column="pid"/>
+     <result property="pname" column="pname"/>
+    </collection>
+  </collection>
+</resultMap>
+
+<select id="selectByDept" resultMap="resultMap">
+ select table_user.uid,table_user.uname,table_dept.did,table_dept.dname,table_post.pid,table_post.pname,table_post.desc 
+ from table_dept inner join table_user on table_dept.did=table_user.did 
+ inner join user_post on table_user.uid=user_post.uid 
+ inner join table_post on user_post.pid=table_post.pid
+</select>
+  
+</mapper>

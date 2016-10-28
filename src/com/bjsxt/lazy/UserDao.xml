@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.lazy.UserDao">
+<!-- 缓存策略 -->
+  <cache type="org.mybatis.caches.ehcache.EhcacheCache" readOnly="true"></cache>
+
+<resultMap type="com.bjsxt.lazy.Dept" id="result1">
+   <id property="did" column="did"/>
+   <result property="dname" column="dname"/>
+   <collection property="ulist" select="selectBy_1" column="did">
+   <id property="uid" column="uid"/>
+   <result property="uname" column="uname"/>
+   
+   
+   </collection>
+
+
+</resultMap>
+
+<select id="selectBy" parameterType="java.lang.Integer" resultMap="result1">
+    select did,dname from dept1 where did=#{did}
+
+</select>
+
+<select id="selectBy_1" resultType="com.bjsxt.lazy.User">
+  select uid,uname from user1 where uid=#{uid}
+</select>
+
+
+
+</mapper>
