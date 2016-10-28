@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bjsxt.dao.UsersDao;
 import com.bjsxt.entity.User;
+import com.bjsxt.entity.UsersVo;
 import com.mysql.jdbc.PreparedStatement;
 
 public class UsersDaoImp implements UsersDao {
@@ -90,6 +91,18 @@ public class UsersDaoImp implements UsersDao {
 		session.commit();
 		session.close();		
 		return list;
+	}
+
+	@Override
+	public List<UsersVo> selectUD() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> selectUserDept() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

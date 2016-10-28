@@ -2,30 +2,28 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- namespace其实就是preparedstament对象 -->
-<!-- id 代表的就是一个个的  sql语句。参数类型parametertype 就是占位符的值 -->
-<mapper namespace="user">
-   <insert id="addUsers" parameterType="com.bjsxt.entity.User">
-   <!-- 这里的#{}对应的是 user类中的get方法。 -->
-      insert into u_table values(null,#{uname},#{uage}) 
-   </insert>
-   <delete id="delUsers" parameterType="java.lang.Integer">
-   delete from u_table where uid=#{uid1}
-   
-   </delete>
-   
-   <select id="slectById" parameterType="java.lang.Integer" resultType="com.bjsxt.entity.User">
-   
-     select uname,uid,uage from u_table where uid=#{uid}
-   
-   </select>
-   
-   <select id="selectUser" parameterType="com.bjsxt.entity.User" resultType="com.bjsxt.entity.User">
-   
-   select * from u_table where uname='${uname}'
-     
-   
-   </select>
+<mapper namespace="com.bjsxt.dao.UsersDao">
+<!-- 返回结果是一个集合 并且其中 关联了一个对象 -->
+<!-- 返回数据的  结果映射集 -->
+<resultMap type="com.bjsxt.entity.User" id="resultMap">
+   <id property="uid" column="uid"/>
+   <result property="uname" column="uname"/>
+   <association property="dept" javaType="com.bjsxt.entity.Dept">    
+      <result property="dname" column="dname"/>  
+   </association>
+</resultMap>
+<!-- sql语句 的定义 -->
+ <select id="selectUserDept" resultMap="resultMap">
+ 
+   select uname,uid,dname from user_table inner join dept_name where user_table.did=dept_name.did
+ 
+ </select>
+ 
+ 
+ 
+ <select id=""></select>
+
+
 
 
 </mapper>

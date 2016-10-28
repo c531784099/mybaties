@@ -4,6 +4,13 @@ public class User {
 	private String uname;
 	private Integer uid;
 	private Integer uage;
+	private Dept dept;
+	public Dept getDept() {
+		return dept;
+	}
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
 	public String getUname() {
 		return uname;
 	}
